@@ -9,7 +9,7 @@ on:
         default: "Genivaldo"
 jobs:
   deploy-dev:
-    uses: SEU-USUARIO/gh-reusable-workflows/.github/workflows/hello-reusable.yml@main
+    uses: geni-junior/gh-reusable-workflows/.github/workflows/hello-reusable.yml@main
     with:
       environment_git: dev
       nome: Genivaldo
@@ -19,7 +19,7 @@ jobs:
 
   deploy-hml:
     needs: deploy-dev
-    uses: SEU-USUARIO/gh-reusable-workflows/.github/workflows/hello-reusable.yml@main
+    uses: geni-junior/gh-reusable-workflows/.github/workflows/hello-reusable.yml@main
     with:
       environment_git: hml
       nome: Genivaldo
