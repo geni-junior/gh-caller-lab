@@ -1,0 +1,25 @@
+name: Call External Reusable Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      nome:
+        description: "Digite o nome"
+        required: true
+        default: "Genivaldo"
+      ambiente:
+        description: "Digite o ambiente"
+        required: true
+        default: "dev"
+      mensagem_extra:
+        description: "Digite uma mensagem extra"
+        required: true
+        default: "Lab executado com sucesso"
+
+jobs:
+  chamar-workflow-externo:
+    uses: genijunior/gh-reusable-workflows/.github/workflows/hello-reusable.yml@main
+    with:
+      nome: ${{ inputs.nome }}
+      ambiente: ${{ inputs.ambiente }}
+      mensagem_extra: ${{ inputs.mensagem_extra }}
