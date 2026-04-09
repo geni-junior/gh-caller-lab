@@ -7,27 +7,22 @@ on:
         description: "Digite seu nome"
         required: true
         default: "Genivaldo"
-
 jobs:
-  dev:
-    name: Executar DEV
-    environment: dev
-    uses: geni-junior/gh-reusable-workflows/.github/workflows/hello-reusable.yml@main
+  deploy-dev:
+    uses: SEU-USUARIO/gh-reusable-workflows/.github/workflows/hello-reusable.yml@main
     with:
-      nome: ${{ inputs.nome }}
-      ambiente: dev
-      app_url: ${{ vars.APP_URL }}
+      environment_git: dev
+      nome: Genivaldo
+      app_url: ${{ vars.DEV_APP_URL }}
     secrets:
-      token_app: ${{ secrets.TOKEN_APP }}
+      token_app: ${{ secrets.DEV_TOKEN_APP }}
 
-  hml:
-    name: Executar HML
-    needs: dev
-    environment: hml
-    uses: geni-junior/gh-reusable-workflows/.github/workflows/hello-reusable.yml@main
+  deploy-hml:
+    needs: deploy-dev
+    uses: SEU-USUARIO/gh-reusable-workflows/.github/workflows/hello-reusable.yml@main
     with:
-      nome: ${{ inputs.nome }}
-      ambiente: hml
-      app_url: ${{ vars.APP_URL }}
+      environment_git: hml
+      nome: Genivaldo
+      app_url: ${{ vars.HML_APP_URL }}
     secrets:
-      token_app: ${{ secrets.TOKEN_APP }}
+      token_app: ${{ secrets.HML_TOKEN_APP }}
