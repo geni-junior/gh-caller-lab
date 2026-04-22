@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-actions
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-actions
+  template:
+    metadata:
+      labels:
+        app: hello-actions
+    spec:
+      containers:
+        - name: hello-actions
+          image: ghcr.io/geni-junior/hello-actions-gitops:latest
+          ports:
+            - containerPort: 8080
